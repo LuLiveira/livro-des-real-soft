@@ -16,7 +16,7 @@ import static java.util.Comparator.comparingInt;
 public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("Hello World!");
+//        System.out.println("Hello World!");
 
         var scanner = new Scanner(new FileReader("src/main/java/extrato-modelo.csv"));
 

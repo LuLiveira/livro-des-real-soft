@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="edd85198-c467-4263-ad30-8f000e35e031" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/lucas/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/extrato-modelo.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/dev/lucas/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/lucas/BankTransactionAnalyzerSimple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/extrato-modelo.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/lucas/BankTransactionAnalyzerSimpleMinhaImplementacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/lucas/BankTransactionAnalyzerSimpleMinhaImplementacao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +32,20 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "main",
+    "ignore.preview.features.used": "true",
+    "last_opened_file_path": "C:/Users/lcsdl/OneDrive/Documentos/workspace/livro-des-real-soft/src/main/resources",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lcsdl\OneDrive\Documentos\workspace\livro-des-real-soft\src\main\java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.lucas" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -52,9 +53,22 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dev.lucas.App" />
+  <component name="RunManager" selected="Application.BankTransactionAnalyzerSimple">
+    <configuration name="BankTransactionAnalyzerSimple" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dev.lucas.BankTransactionAnalyzerSimple" />
+      <module name="livro-des-real-soft" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.lucas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankTransactionAnalyzerSimpleMinhaImplementacao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dev.lucas.BankTransactionAnalyzerSimpleMinhaImplementacao" />
       <module name="livro-des-real-soft" />
       <extension name="coverage">
         <pattern>
@@ -68,7 +82,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
+        <item itemvalue="Application.BankTransactionAnalyzerSimple" />
+        <item itemvalue="Application.BankTransactionAnalyzerSimpleMinhaImplementacao" />
       </list>
     </recent_temporary>
   </component>
