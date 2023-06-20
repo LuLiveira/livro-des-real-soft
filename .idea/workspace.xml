@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="edd85198-c467-4263-ad30-8f000e35e031" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/lucas/BankTransactionAnalyzerSimple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/extrato-modelo.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/lucas/BankTransactionAnalyzerSimpleMinhaImplementacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/lucas/BankTransactionAnalyzerSimpleMinhaImplementacao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +37,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lcsdl\OneDrive\Documentos\workspace\livro-des-real-soft\src\main\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lcsdl\OneDrive\Documentos\workspace\livro-des-real-soft\src\main\java" />
     </key>
@@ -53,7 +52,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.BankTransactionAnalyzerSimple">
+  <component name="RunManager" selected="Application.BankTransactionAnalyzerSimpleMinhaImplementacao">
     <configuration name="BankTransactionAnalyzerSimple" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dev.lucas.BankTransactionAnalyzerSimple" />
       <module name="livro-des-real-soft" />
@@ -82,8 +81,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BankTransactionAnalyzerSimple" />
         <item itemvalue="Application.BankTransactionAnalyzerSimpleMinhaImplementacao" />
+        <item itemvalue="Application.BankTransactionAnalyzerSimple" />
       </list>
     </recent_temporary>
   </component>
