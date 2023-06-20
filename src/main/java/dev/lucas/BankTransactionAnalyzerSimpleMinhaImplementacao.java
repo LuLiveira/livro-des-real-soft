@@ -5,17 +5,15 @@ import java.io.FileReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
 
 /**
  * Hello world!
  */
-public class App {
+public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Hello World!");
