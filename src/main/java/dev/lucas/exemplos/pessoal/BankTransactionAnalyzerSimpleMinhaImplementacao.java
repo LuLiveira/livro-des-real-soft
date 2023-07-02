@@ -1,4 +1,4 @@
-package dev.lucas;
+package dev.lucas.exemplos.pessoal;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,14 +20,15 @@ import static java.util.Comparator.comparingInt;
  */
 public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 
-    private final static String root = "src/main/resources/";
+
     private final static String VIRGULA = ",";
+    private final static BankStatementCSVParserMinhaImplementacao bankStatementCSVParserMinhaImplementacao = BankStatementCSVParserMinhaImplementacao.newInstance();
 
     public static void main(String[] args) throws IOException {
-        var path = Paths.get(root + "extrato-modelo.csv");
         var mes = "01";
+        Path filePath = bankStatementCSVParserMinhaImplementacao.getFilePath();
 
-        List<String> lines = Files.readAllLines(path);
+        List<String> lines = Files.readAllLines(filePath);
 
         calculaTotal(lines, mes);
 //        calculaTotal(lines);
@@ -87,11 +88,11 @@ public class BankTransactionAnalyzerSimpleMinhaImplementacao {
         double total = 0d;
 
         var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        for (final String line: lines) {
+        for (final String line : lines) {
             final String[] columns = line.split(VIRGULA);
             var date = columns[0];
             var dateParse = LocalDate.parse(date, formatter);
-            if(dateParse.getMonth().getValue() == Integer.parseInt(mes)){
+            if (dateParse.getMonth().getValue() == Integer.parseInt(mes)) {
                 final double amount = Double.parseDouble(columns[1]);
                 total += amount;
             }
