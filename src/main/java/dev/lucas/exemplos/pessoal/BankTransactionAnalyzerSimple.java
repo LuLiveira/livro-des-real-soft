@@ -1,45 +1,47 @@
 package dev.lucas.exemplos.pessoal;
 
+import dev.lucas.exemplos.pessoal.annotations.MinhaImplementacao;
+import dev.lucas.exemplos.pessoal.annotations.Service;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDate;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Hello world!
  */
+
+/**
+ * Minha implementação dos exercicios do livro
+ */
 @Service
-public class BankTransactionAnalyzerSimpleMinhaImplementacao {
+@MinhaImplementacao
+public class BankTransactionAnalyzerSimple {
 
 
-    private final static BankStatementCSVParserMinhaImplementacao bankStatementCSVParserMinhaImplementacao = BankStatementCSVParserMinhaImplementacao.newInstance();
+    private final static BankStatementCSVParser BANK_STATEMENT_CSV_PARSER = BankStatementCSVParser.newInstance();
 
     public static void main(String[] args) throws IOException {
-        var mes = "01";
-        var transactions = bankStatementCSVParserMinhaImplementacao.getTransactions();
+        var transactions = BANK_STATEMENT_CSV_PARSER.getTransactions();
 
         selectInMonth(transactions, Month.JANUARY);
         calculateTotalAmount(transactions);
 
     }
 
-    public static void calculateTotalAmount(List<BankTransactionMinhaImplementacao> list) {
+    public static void calculateTotalAmount(List<BankTransaction> list) {
         double total = 0d;
-        for (BankTransactionMinhaImplementacao bankTransaction : list) {
+        for (BankTransaction bankTransaction : list) {
             total += bankTransaction.amount();
         }
 
         System.out.println("The total for all transactions is " + total);
     }
 
-    public static void selectInMonth(List<BankTransactionMinhaImplementacao> lines, Month mes) {
+    public static void selectInMonth(List<BankTransaction> lines, Month mes) {
         double total = 0d;
 
-        for (final BankTransactionMinhaImplementacao bankTransaction : lines) {
+        for (final BankTransaction bankTransaction : lines) {
 
             if (bankTransaction.date().getMonth().getValue() == mes.getValue()) {
                 final double amount = bankTransaction.amount();

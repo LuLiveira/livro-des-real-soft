@@ -1,9 +1,11 @@
 package dev.lucas.exemplos.pessoal;
 
+import dev.lucas.exemplos.pessoal.annotations.Entity;
+
 import java.time.LocalDate;
 
 @Entity
-public record BankTransactionMinhaImplementacao (LocalDate date, double amount, String description) {
+public record BankTransaction(LocalDate date, double amount, String description) {
 
     @Override
     public String toString() {

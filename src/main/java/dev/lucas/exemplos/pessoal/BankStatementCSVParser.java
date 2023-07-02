@@ -1,5 +1,7 @@
 package dev.lucas.exemplos.pessoal;
 
+import dev.lucas.exemplos.pessoal.annotations.MinhaImplementacao;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,25 +9,23 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static java.util.Collections.unmodifiableList;
-
-public final class BankStatementCSVParserMinhaImplementacao {
+@MinhaImplementacao
+public final class BankStatementCSVParser {
     private Path filePath;
     private final String VIRGULA = ",";
 
-    private final List<BankTransactionMinhaImplementacao> transactions = new ArrayList<>();
+    private final List<BankTransaction> transactions = new ArrayList<>();
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 
-    public static BankStatementCSVParserMinhaImplementacao newInstance() {
-        return new BankStatementCSVParserMinhaImplementacao();
+    public static BankStatementCSVParser newInstance() {
+        return new BankStatementCSVParser();
     }
 
-    private BankStatementCSVParserMinhaImplementacao() {
+    private BankStatementCSVParser() {
         String root = "src/main/resources/";
         this.filePath = Paths.get(root + "extrato-modelo.csv");
 
@@ -37,7 +37,7 @@ public final class BankStatementCSVParserMinhaImplementacao {
         }
     }
 
-    public List<BankTransactionMinhaImplementacao> getTransactions() {
+    public List<BankTransaction> getTransactions() {
         return this.transactions;
     }
 
@@ -47,7 +47,7 @@ public final class BankStatementCSVParserMinhaImplementacao {
             var date = LocalDate.parse(columns[0], this.formatter);
             double amount = Double.parseDouble(columns[1]);
             String description = String.valueOf(columns[2]);
-            this.transactions.add(new BankTransactionMinhaImplementacao(date, amount, description));
+            this.transactions.add(new BankTransaction(date, amount, description));
         }
     }
 }
