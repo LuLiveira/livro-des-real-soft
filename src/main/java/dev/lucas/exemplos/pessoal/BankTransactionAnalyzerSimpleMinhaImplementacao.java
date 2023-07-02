@@ -22,8 +22,8 @@ public class BankTransactionAnalyzerSimpleMinhaImplementacao {
         var mes = "01";
         var transactions = bankStatementCSVParserMinhaImplementacao.getTransactions();
 
-        calculaTotal(transactions, Month.JANUARY);
-        calculaTotal(transactions);
+        selectInMonth(transactions, Month.JANUARY);
+        calculateTotalAmount(transactions);
 
     }
 
