@@ -31,6 +31,13 @@ public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 
         System.out.println("The total for all transactions is " + total);
 
+
+        /**
+         * A linhas comentadas são uma implementação do meu entendimento lendo o livro
+         * uma primeira vez. As linhas não comentadas são a minha implementação depois
+         * de ver a implementação do livro.
+         */
+
 //        var scanner = new Scanner(new FileReader("src/main/java/extrato-modelo.csv"));
 //
 //        List<Gastos> extrato = new ArrayList<>();
@@ -66,11 +73,11 @@ public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 
     }
 
-    record Gastos (String data, String valor, String descricao) {
-
-        @Override
-        public String toString() {
-            return "Dia: " + data + " - Valor: " + valor + " Descrição: " + descricao;
-        }
-    }
+//    record Gastos (String data, String valor, String descricao) {
+//
+//        @Override
+//        public String toString() {
+//            return "Dia: " + data + " - Valor: " + valor + " Descrição: " + descricao;
+//        }
+//    }
 }
