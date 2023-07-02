@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +21,16 @@ import static java.util.Comparator.comparingInt;
 public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 
     private final static String root = "src/main/resources/";
+    private final static String VIRGULA = ",";
 
     public static void main(String[] args) throws IOException {
         var path = Paths.get(root + "extrato-modelo.csv");
+        var mes = "01";
 
-        double total = 0d;
-        for (String registro : Files.readAllLines(path)) {
-            total += Double.parseDouble(registro.split(",")[1]);
-        }
+        List<String> lines = Files.readAllLines(path);
 
-        System.out.println("The total for all transactions is " + total);
+        calculaTotal(lines, mes);
+//        calculaTotal(lines);
 
 
         /**
@@ -71,6 +72,32 @@ public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 //        System.out.println("Top 10 Gastos -> " + top10Gastos);
 
 
+    }
+
+    private static void calculaTotal(List<String> lines) {
+        double total = 0d;
+        for (String registro : lines) {
+            total += Double.parseDouble(registro.split(VIRGULA)[1]);
+        }
+
+        System.out.println("The total for all transactions is " + total);
+    }
+
+    private static void calculaTotal(List<String> lines, String mes) {
+        double total = 0d;
+
+        var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        for (final String line: lines) {
+            final String[] columns = line.split(VIRGULA);
+            var date = columns[0];
+            var dateParse = LocalDate.parse(date, formatter);
+            if(dateParse.getMonth().getValue() == Integer.parseInt(mes)){
+                final double amount = Double.parseDouble(columns[1]);
+                total += amount;
+            }
+        }
+
+        System.out.println("The total for all transactions in month " + mes + " is " + total);
     }
 
 //    record Gastos (String data, String valor, String descricao) {
