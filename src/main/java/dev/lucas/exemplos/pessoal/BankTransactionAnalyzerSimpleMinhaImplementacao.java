@@ -1,44 +1,61 @@
 package dev.lucas.exemplos.pessoal;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import static java.util.Comparator.comparingInt;
 
 /**
  * Hello world!
  */
+@Service
 public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 
 
-    private final static String VIRGULA = ",";
     private final static BankStatementCSVParserMinhaImplementacao bankStatementCSVParserMinhaImplementacao = BankStatementCSVParserMinhaImplementacao.newInstance();
 
     public static void main(String[] args) throws IOException {
         var mes = "01";
-        Path filePath = bankStatementCSVParserMinhaImplementacao.getFilePath();
+        var transactions = bankStatementCSVParserMinhaImplementacao.getTransactions();
 
-        List<String> lines = Files.readAllLines(filePath);
+        calculaTotal(transactions, Month.JANUARY);
+        calculaTotal(transactions);
 
-        calculaTotal(lines, mes);
-//        calculaTotal(lines);
+    }
+
+    public static void calculateTotalAmount(List<BankTransactionMinhaImplementacao> list) {
+        double total = 0d;
+        for (BankTransactionMinhaImplementacao bankTransaction : list) {
+            total += bankTransaction.amount();
+        }
+
+        System.out.println("The total for all transactions is " + total);
+    }
+
+    public static void selectInMonth(List<BankTransactionMinhaImplementacao> lines, Month mes) {
+        double total = 0d;
+
+        for (final BankTransactionMinhaImplementacao bankTransaction : lines) {
+
+            if (bankTransaction.date().getMonth().getValue() == mes.getValue()) {
+                final double amount = bankTransaction.amount();
+                total += amount;
+            }
+        }
+        System.out.println("The total for all transactions in month " + mes + " is " + total);
+    }
+}
 
 
-        /**
-         * A linhas comentadas são uma implementação do meu entendimento lendo o livro
-         * uma primeira vez. As linhas não comentadas são a minha implementação depois
-         * de ver a implementação do livro.
-         */
+/**
+ * A linhas comentadas são uma implementação do meu entendimento lendo o livro
+ * uma primeira vez. As linhas não comentadas são a minha implementação depois
+ * de ver a implementação do livro.
+ */
 
 //        var scanner = new Scanner(new FileReader("src/main/java/extrato-modelo.csv"));
 //
@@ -71,41 +88,3 @@ public class BankTransactionAnalyzerSimpleMinhaImplementacao {
 //                .limit(10).toList();
 //
 //        System.out.println("Top 10 Gastos -> " + top10Gastos);
-
-
-    }
-
-    private static void calculaTotal(List<String> lines) {
-        double total = 0d;
-        for (String registro : lines) {
-            total += Double.parseDouble(registro.split(VIRGULA)[1]);
-        }
-
-        System.out.println("The total for all transactions is " + total);
-    }
-
-    private static void calculaTotal(List<String> lines, String mes) {
-        double total = 0d;
-
-        var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        for (final String line : lines) {
-            final String[] columns = line.split(VIRGULA);
-            var date = columns[0];
-            var dateParse = LocalDate.parse(date, formatter);
-            if (dateParse.getMonth().getValue() == Integer.parseInt(mes)) {
-                final double amount = Double.parseDouble(columns[1]);
-                total += amount;
-            }
-        }
-
-        System.out.println("The total for all transactions in month " + mes + " is " + total);
-    }
-
-//    record Gastos (String data, String valor, String descricao) {
-//
-//        @Override
-//        public String toString() {
-//            return "Dia: " + data + " - Valor: " + valor + " Descrição: " + descricao;
-//        }
-//    }
-}

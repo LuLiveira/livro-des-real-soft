@@ -16,29 +16,28 @@ public class BankTransactionAnalyzerSimple {
 
     private final static String RESOURCES = "src/main/resources/";
 
+
+
     public static void main(String[] args) throws IOException {
-        var fileToExtract = args.length == 0 ? "extrato-modelo.csv" : args[0]; //Esse código não faz parte do livro
+        final BankStatementCSVParser bankStatementCSVParser = new BankStatementCSVParser();
+        final String fileToExtract = args.length == 0 ? "extrato-modelo.csv" : args[0]; //Esse código não faz parte do livro
         final var path = Paths.get(RESOURCES + fileToExtract);
+
         final List<String> lines = Files.readAllLines(path);
-        final String mes = "01"; //Janeiro
+        final List<BankTransaction> bankTransactions = bankStatementCSVParser.parseLinesFromCSV(lines);
 
 
-//        calculaTotal(lines);
+        calculaTotal(bankTransactions);
 
-        calculaTotalMes(lines);
+        calculaTotalMes(bankTransactions);
 
     }
 
-    private static void calculaTotalMes(List<String> lines) {
-        final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
+    private static void calculaTotalMes(List<BankTransaction> lines) {
         double total = 0d;
-        for (final String line: lines) {
-            final String[] columns = line.split(",");
-            LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
-
-            if (date.getMonth() == Month.JANUARY) {
-                final double amount = Double.parseDouble(columns[1]);
+        for (final BankTransaction bankTransaction: lines) {
+            if (bankTransaction.getDate().getMonth() == Month.JANUARY) {
+                final double amount = bankTransaction.getAmount();
                 total += amount;
             }
         }
@@ -46,11 +45,10 @@ public class BankTransactionAnalyzerSimple {
         System.out.println("The total for all transactions in January is " + total);
     }
 
-    private static void calculaTotal(List<String> lines) {
+    private static void calculaTotal(List<BankTransaction> lines) {
         double total = 0d;
-        for (final String line: lines) {
-            final String[] columns = line.split(",");
-            final double amount = Double.parseDouble(columns[1]);
+        for (final BankTransaction bankTransaction: lines) {
+            final double amount = bankTransaction.getAmount();
             total += amount;
         }
 

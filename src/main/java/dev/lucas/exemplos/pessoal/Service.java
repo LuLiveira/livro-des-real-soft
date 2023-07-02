@@ -1,4 +1,5 @@
 package dev.lucas.exemplos.pessoal;
 
-public @interface Singleton {
+@UseCase
+public @interface Service {
 }
