@@ -1,7 +1,12 @@
 package dev.lucas.exemplos.livro;
 
+import java.sql.Array;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -21,16 +26,9 @@ public class BankTransactionProcessor {
     }
 
     public double calculateTotalInMonth(final Month month) {
-        double total = 0d;
-        for (final BankTransaction bankTransaction: bankTransactionsList) {
-            if (bankTransaction.getDate().getMonth() == month) {
-                final double amount = bankTransaction.getAmount();
-                total += amount;
-            }
-        }
-
-        //System.out.println("The total for all transactions in January is " + total);
-        return total;
+        return this.summarizeTransaction((
+                (accumulator, bankTransaction) -> bankTransaction.getDate().getMonth() == month
+                        ? accumulator + bankTransaction.getAmount() : accumulator));
     }
 
     public double calculateTotalAmount() {
@@ -56,4 +54,38 @@ public class BankTransactionProcessor {
         //System.out.println("The total for all transactions in January is " + total);
         return total;
     }
+
+
+    /**
+     * 
+     * @param filter
+     * @return return a list of BankTransaction
+     * this method is a implementation from the book
+     */
+    public List<BankTransaction> findTransactions(final BankTransactionFilter filter){
+        return bankTransactionsList.stream().filter(filter::test).toList();
+    }
+
+    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
+        return this.findTransactions(bankTransaction -> bankTransaction.getAmount() >= amount);
+    }
+
+    private double summarizeTransaction(final BankTransactionSummarizer bankTransactionSummarizer) {
+        double result = 0d;
+        for (final BankTransaction bankTransaction:
+             bankTransactionsList) {
+            result += bankTransactionSummarizer.summarize(result, bankTransaction);
+        }
+        return result;
+    }
+
+    /**
+     * 
+     * @param filter
+     * @return return a filter list of BankTransaction
+     * this method is an option in java8 it use a Predicate interface.
+     */
+//    public List<BankTransaction> findTransactions(final Predicate<BankTransaction> filter){
+//        return bankTransactionsList.stream().filter(filter::test).toList();
+//    }
 }

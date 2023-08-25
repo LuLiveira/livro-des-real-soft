@@ -29,6 +29,13 @@ public class BankTransactionAnalyzerSimple {
         System.out.println("The total for all transactions in January is" + processor.calculateTotalInMonth(Month.JANUARY));
 
         System.out.println("The total salary received is " + processor.calculateTotalForCategory("Salary"));
+
+        System.out.println("The total amount filter by month and amount is " + processor.findTransactions(new BankTransactionIsInFebruaryAndExpensive()));
+
+        System.out.println("The total amount filter by month and amount is " + processor.findTransactions(
+                bankTransaction -> bankTransaction.getDate().getMonth() == Month.FEBRUARY
+                        && bankTransaction.getAmount() > 1_000)
+        );
     }
 
 }
