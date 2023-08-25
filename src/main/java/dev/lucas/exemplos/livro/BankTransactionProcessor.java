@@ -1,12 +1,7 @@
 package dev.lucas.exemplos.livro;
 
-import java.sql.Array;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -58,7 +53,7 @@ public class BankTransactionProcessor {
 
     /**
      * 
-     * @param filter
+     * @param filter filter implementation that go be apply in bankTransactionList
      * @return return a list of BankTransaction
      * this method is a implementation from the book
      */
@@ -66,25 +61,25 @@ public class BankTransactionProcessor {
         return bankTransactionsList.stream().filter(filter::test).toList();
     }
 
-    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
-        return this.findTransactions(bankTransaction -> bankTransaction.getAmount() >= amount);
-    }
+//    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
+//        return this.findTransactions(bankTransaction -> bankTransaction.getAmount() >= amount);
+//    }
 
     private double summarizeTransaction(final BankTransactionSummarizer bankTransactionSummarizer) {
         double result = 0d;
         for (final BankTransaction bankTransaction:
              bankTransactionsList) {
-            result += bankTransactionSummarizer.summarize(result, bankTransaction);
+            result = bankTransactionSummarizer.summarize(result, bankTransaction);
         }
         return result;
     }
 
-    /**
-     * 
-     * @param filter
-     * @return return a filter list of BankTransaction
-     * this method is an option in java8 it use a Predicate interface.
-     */
+//    /**
+//     *
+//     * @param filter
+//     * @return return a filter list of BankTransaction
+//     * this method is an option in java8 it use a Predicate interface.
+//     */
 //    public List<BankTransaction> findTransactions(final Predicate<BankTransaction> filter){
 //        return bankTransactionsList.stream().filter(filter::test).toList();
 //    }

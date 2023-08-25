@@ -26,7 +26,7 @@ public class BankTransactionAnalyzerSimple {
 
         System.out.println("The total for all transactions is " + processor.calculateTotalAmount());
 
-        System.out.println("The total for all transactions in January is" + processor.calculateTotalInMonth(Month.JANUARY));
+        System.out.println("The total for all transactions in January is " + processor.calculateTotalInMonth(Month.JANUARY));
 
         System.out.println("The total salary received is " + processor.calculateTotalForCategory("Salary"));
 
