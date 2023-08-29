@@ -18,7 +18,7 @@ public class BankStatementCSVParser implements BankStatementParser {
             throw new CSVSyntaxException();
         }
 
-        var validator = new OverlySpecificBankStatementValidator(columns[0], columns[1] ,columns[2]);
+        var validator = new OverlySpecificBankStatementValidator(columns[2], columns[0] ,columns[1]);
         var notification = validator.validate();
         if(notification.hasErrors()){
             throw new IllegalStateException(notification.getErrors().toString());

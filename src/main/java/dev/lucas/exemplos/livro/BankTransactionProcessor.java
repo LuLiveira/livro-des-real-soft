@@ -33,7 +33,6 @@ public class BankTransactionProcessor {
             total += amount;
         }
 
-        //System.out.println("The total for all transactions is " + total);
         return total;
     }
 
@@ -65,7 +64,7 @@ public class BankTransactionProcessor {
 //        return this.findTransactions(bankTransaction -> bankTransaction.getAmount() >= amount);
 //    }
 
-    private double summarizeTransaction(final BankTransactionSummarizer bankTransactionSummarizer) {
+    public double summarizeTransaction(final BankTransactionSummarizer bankTransactionSummarizer) {
         double result = 0d;
         for (final BankTransaction bankTransaction:
              bankTransactionsList) {

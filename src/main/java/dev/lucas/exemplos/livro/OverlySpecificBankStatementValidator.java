@@ -1,6 +1,7 @@
 package dev.lucas.exemplos.livro;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ public class OverlySpecificBankStatementValidator {
 
 
         try {
-            var parsedDate = LocalDate.parse(this.date);
+            var parsedDate = LocalDate.parse(this.date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             if (parsedDate.isAfter(LocalDate.now())) {
                 notification.addError("date cannot be in the future");
             }
