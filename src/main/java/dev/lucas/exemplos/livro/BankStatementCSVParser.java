@@ -8,10 +8,22 @@ import java.util.List;
 public class BankStatementCSVParser implements BankStatementParser {
 
     private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final int EXPECTED_ATTRIBUTES_LENGTH = 3;
 
     public BankTransaction parseFrom(final String line) {
 
         final String[] columns = line.split(",");
+
+        if ( columns.length < EXPECTED_ATTRIBUTES_LENGTH){
+            throw new CSVSyntaxException();
+        }
+
+        var validator = new OverlySpecificBankStatementValidator(columns[0], columns[1] ,columns[2]);
+        var notification = validator.validate();
+        if(notification.hasErrors()){
+            throw new IllegalStateException(notification.getErrors().toString());
+        }
+
         final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
         final double amount = Double.parseDouble(columns[1]);
         final String description = columns[2];

@@ -22,14 +22,14 @@ public class BankTransactionProcessor {
 
     public double calculateTotalInMonth(final Month month) {
         return this.summarizeTransaction((
-                (accumulator, bankTransaction) -> bankTransaction.getDate().getMonth() == month
-                        ? accumulator + bankTransaction.getAmount() : accumulator));
+                (accumulator, bankTransaction) -> bankTransaction.date().getMonth() == month
+                        ? accumulator + bankTransaction.amount() : accumulator));
     }
 
     public double calculateTotalAmount() {
         double total = 0d;
         for (final BankTransaction bankTransaction: bankTransactionsList) {
-            final double amount = bankTransaction.getAmount();
+            final double amount = bankTransaction.amount();
             total += amount;
         }
 
@@ -40,8 +40,8 @@ public class BankTransactionProcessor {
     public double calculateTotalForCategory(String category) {
         double total = 0d;
         for (final BankTransaction bankTransaction: bankTransactionsList) {
-            if (bankTransaction.getDescription().equals(category)) {
-                final double amount = bankTransaction.getAmount();
+            if (bankTransaction.description().equals(category)) {
+                final double amount = bankTransaction.amount();
                 total += amount;
             }
         }

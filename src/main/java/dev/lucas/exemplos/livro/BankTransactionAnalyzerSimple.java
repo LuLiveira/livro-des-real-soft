@@ -33,8 +33,8 @@ public class BankTransactionAnalyzerSimple {
         System.out.println("The total amount filter by month and amount is " + processor.findTransactions(new BankTransactionIsInFebruaryAndExpensive()));
 
         System.out.println("The total amount filter by month and amount is " + processor.findTransactions(
-                bankTransaction -> bankTransaction.getDate().getMonth() == Month.FEBRUARY
-                        && bankTransaction.getAmount() > 1_000)
+                bankTransaction -> bankTransaction.date().getMonth() == Month.FEBRUARY
+                        && bankTransaction.amount() > 1_000)
         );
     }
 

@@ -6,7 +6,7 @@ class BankTransactionIsInFebruaryAndExpensive implements BankTransactionFilter {
 
     @Override
     public boolean test(BankTransaction bankTransaction) {
-        return bankTransaction.getDate().getMonth().equals(Month.FEBRUARY)
-                && bankTransaction.getAmount() >= 1_000;
+        return bankTransaction.date().getMonth().equals(Month.FEBRUARY)
+                && bankTransaction.amount() >= 1_000;
     }
 }

@@ -19,9 +19,9 @@ public class BankStatementCSVParserTest {
         final var expected = new BankTransaction(LocalDate.of(2017, Month.JANUARY, 30), -50, "Tesco");
         final var tolerance = 0.0d;
 
-        Assert.assertEquals(expected.getDate(), result.getDate());
-        Assert.assertEquals(expected.getAmount(), result.getAmount(), tolerance);
-        Assert.assertEquals(expected.getDescription(), result.getDescription());
+        Assert.assertEquals(expected.date(), result.date());
+        Assert.assertEquals(expected.amount(), result.amount(), tolerance);
+        Assert.assertEquals(expected.description(), result.description());
     }
 
     @Test
@@ -36,13 +36,13 @@ public class BankStatementCSVParserTest {
         var result1 = results.get(0);
         var result2 = results.get(1);
 
-        Assert.assertEquals(expected1.getDate(), result1.getDate());
-        Assert.assertEquals(expected1.getAmount(), result1.getAmount(), tolerance);
-        Assert.assertEquals(expected1.getDescription(), result1.getDescription());
+        Assert.assertEquals(expected1.date(), result1.date());
+        Assert.assertEquals(expected1.amount(), result1.amount(), tolerance);
+        Assert.assertEquals(expected1.description(), result1.description());
 
-        Assert.assertEquals(expected2.getDate(), result2.getDate());
-        Assert.assertEquals(expected2.getAmount(), result2.getAmount(), tolerance);
-        Assert.assertEquals(expected2.getDescription(), result2.getDescription());
+        Assert.assertEquals(expected2.date(), result2.date());
+        Assert.assertEquals(expected2.amount(), result2.amount(), tolerance);
+        Assert.assertEquals(expected2.description(), result2.description());
 
     }
 }
