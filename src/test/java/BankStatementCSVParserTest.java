@@ -1,5 +1,5 @@
-import dev.lucas.exemplos.livro.BankStatementCSVParser;
-import dev.lucas.exemplos.livro.BankTransaction;
+import dev.lucas.exemplos.livro.transactions_manager.BankStatementCSVParser;
+import dev.lucas.exemplos.livro.transactions_manager.BankTransaction;
 import junit.framework.Assert;
 import org.junit.Test;
 
